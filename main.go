@@ -23,16 +23,13 @@ func main() {
 		fmt.Println(string(out[:len(out)-1]))
 		_, err = exec.Command("git", "add", "./").Output()
 		ErrHandler(err)
-
 		_, err = exec.Command("git", "commit", "-am", os.Args[1]).Output()
 		ErrHandler(err)
 		branchName := string(out[:len(out)-1])
 		_, err = exec.Command("git", "push", "origin", branchName).Output()
 		ErrHandler(err)
-		fmt.Printf("2. Pushed commit to branch name: %s,%s,%s\n", out)
+		fmt.Printf("2. Pushed commit to branch name: %s\n", out)
 	}
-	// listarg := []string{"some", "text"}
-	// fmt.Println(strings.Join(listarg, "' '"))
 
 }
 
