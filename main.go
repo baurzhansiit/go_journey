@@ -17,6 +17,9 @@ func main() {
 		fmt.Println("[ INFO ] Add string argument eg. <g 'comment'> before Pushing to Github")
 
 	} else {
+		check, err := exec.Command("git", "log").Output()
+		ErrHandler(err)
+		fmt.Printf("check was passed: %s", check)
 		fmt.Printf("1. Github pushing with commits:  %s\n", os.Args[1])
 		out, err := exec.Command("git", "rev-parse", "--abbrev-ref", "HEAD").Output()
 		ErrHandler(err)
@@ -32,7 +35,3 @@ func main() {
 	}
 
 }
-
-// git add .
-// #    git commit -am "$msg"
-// #    git push origin $currentbranch
